@@ -307,34 +307,33 @@
 
     <div class="step" data-step="1">
       <h3>Open the QuickCut folder properties</h3>
-      <p>Right-click the QuickCut folder → <strong>Properties</strong>. Click <strong>① the Sharing tab</strong>, then click <strong>② Advanced Sharing</strong>.</p>
+      <p>Right-click the QuickCut folder → <strong>Properties</strong> → click the <strong>Sharing</strong> tab.</p>
       <img src="https://changhyeon0352.github.io/quickcutNetworkSettingsGuide/smbsetting (1).png" alt="Folder Properties – Sharing tab" />
-      <div class="caption">① Sharing tab → ② Advanced Sharing</div>
+      <div class="caption">Sharing tab</div>
     </div>
 
     <div class="step" data-step="2">
-      <h3>Enable sharing and open Permissions</h3>
-      <p>Check <strong>① Share this folder</strong>. Confirm the share name is <code>QuickCut</code> <strong>②</strong>. Click <strong>③ Permissions</strong> to open the permissions window.</p>
-      <p>In the Permissions window, if your account already appears in <strong>Group or user names</strong>, skip steps ④⑤⑥. Otherwise click <strong>④ Add</strong>, type your Windows account name in the text box <strong>⑤</strong> (the same name you created in Section 2), and click <strong>⑥ OK</strong>.</p>
-      <img src="https://changhyeon0352.github.io/quickcutNetworkSettingsGuide/smbsetting (2).png" alt="Advanced Sharing – Permissions – Add user" />
-      <div class="caption">① Share this folder → ② Share name: QuickCut → ③ Permissions → ④ Add → ⑤ Enter account name → ⑥ OK</div>
-    </div>
-
-    <div class="step" data-step="3">
-      <h3>Grant Full Control and apply</h3>
-      <p>Select your account <strong>①</strong> and make sure <strong>Full Control – Allow ②</strong> is checked. Click <strong>③ Apply → ④ OK</strong> to close the Permissions window, then click <strong>⑤ Apply → ⑥ OK</strong> in the Advanced Sharing window, and finally <strong>⑦ OK</strong> in the Properties window.</p>
-      <img src="https://changhyeon0352.github.io/quickcutNetworkSettingsGuide/smbsetting (3).png" alt="Full Control permissions – Apply and OK" />
-      <div class="caption">① Select account → ② Full Control Allow → ③ Apply → ④ OK → ⑤⑥⑦ Close all windows</div>
+      <h3>Grant access via Share...</h3>
+      <p>Click <strong>① Share...</strong>. In the Network access window, select your Windows account from the dropdown <strong>②</strong> and click <strong>Add</strong>. Make sure the Permission Level is set to <strong>Read/Write ③</strong>. Click <strong>④ Share</strong> to apply.</p>
+      <div class="note"><strong>Note:</strong> This step and the Advanced Sharing step below control separate permission layers. Both are required for SMB access to work correctly.</div>
+      <img src="sharePermission.png" alt="Sharing tab – Share... – Add account with Read/Write" />
+      <div class="caption">① Share... → ② Select account → ③ Read/Write → ④ Share</div>
     </div>
 
     <hr class="divider"/>
 
+    <div class="step" data-step="3">
+      <h3>Open Advanced Sharing</h3>
+      <p>Back in the Sharing tab, click <strong>Advanced Sharing</strong>. Check <strong>① Share this folder</strong> and confirm the share name is <code>QuickCut</code> <strong>②</strong>. Click <strong>③ Permissions</strong>.</p>
+      <img src="https://changhyeon0352.github.io/quickcutNetworkSettingsGuide/smbsetting (2).png" alt="Advanced Sharing – Permissions – Add user" />
+      <div class="caption">① Share this folder → ② Share name: QuickCut → ③ Permissions</div>
+    </div>
+
     <div class="step" data-step="4">
-      <h3>Also grant access via the Sharing tab (required)</h3>
-      <p>Back in the Properties window, click <strong>① Share...</strong> on the Sharing tab. In the Network access window, select your account from the dropdown <strong>②</strong> and click <strong>Add</strong>. Make sure the Permission Level is set to <strong>Read/Write ③</strong>. Click <strong>④ Share</strong> to apply.</p>
-      <div class="note"><strong>Why is this needed?</strong> Advanced Sharing and the Share... button control separate permission layers. Both must allow your account for SMB access to work correctly.</div>
-      <img src="sharePermission.png" alt="Sharing tab – Share... – Add account with Read/Write" />
-      <div class="caption">① Share... → ② Select account → ③ Read/Write → ④ Share</div>
+      <h3>Add account and grant Full Control</h3>
+      <p>If your account is not listed, click <strong>① Add</strong>, type your Windows account name <strong>②</strong>, and click <strong>OK</strong>. Select your account <strong>③</strong> and check <strong>Full Control – Allow ④</strong>. Click <strong>Apply → OK</strong> to close Permissions, then <strong>Apply → OK</strong> in Advanced Sharing, and finally <strong>OK</strong> in Properties.</p>
+      <img src="https://changhyeon0352.github.io/quickcutNetworkSettingsGuide/smbsetting (3).png" alt="Full Control permissions – Apply and OK" />
+      <div class="caption">① Add → ② Account name → ③ Select → ④ Full Control Allow → Apply → OK</div>
     </div>
   </div>
 
