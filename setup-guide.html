@@ -1,486 +1,376 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QuickCut – PC Setup Guide</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PC Setup Guide</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --bg: #0f0f11;
-    --surface: #17171a;
-    --surface2: #1e1e23;
-    --border: #2a2a32;
-    --accent: #4f8cff;
-    --accent2: #a78bfa;
-    --text: #e8e8f0;
-    --text-muted: #b0b0c8;
-    --success: #34d399;
-    --warning: #fbbf24;
-    --step-num: #ff6b6b;
-  }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f5f5f7;
+      color: #1d1d1f;
+      line-height: 1.6;
+    }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+    header {
+      background: #1d1d1f;
+      color: #fff;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    header span.logo {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    header span.subtitle {
+      font-size: 0.9rem;
+      color: #aaa;
+    }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 15px;
-    line-height: 1.7;
-    min-height: 100vh;
-  }
+    .intro {
+      background: #fff;
+      border-left: 4px solid #0071e3;
+      margin: 24px auto;
+      max-width: 860px;
+      padding: 20px 24px;
+      border-radius: 0 12px 12px 0;
+    }
+    .intro p {
+      font-size: 0.97rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .intro ul {
+      list-style: none;
+      padding: 0;
+    }
+    .intro ul li {
+      font-size: 0.93rem;
+      color: #444;
+      margin-bottom: 5px;
+    }
 
-  /* Header */
-  header {
-    border-bottom: 1px solid var(--border);
-    padding: 28px 40px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    background: var(--surface);
-  }
-  .logo {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--accent);
-    letter-spacing: -0.5px;
-  }
-  .logo span { color: var(--accent2); }
-  header p {
-    color: var(--text-muted);
-    font-size: 13px;
-    margin-left: auto;
-    font-family: 'IBM Plex Mono', monospace;
-  }
+    .skip-box {
+      background: #fff8e1;
+      border: 1px solid #ffd54f;
+      border-radius: 10px;
+      max-width: 860px;
+      margin: 0 auto 28px;
+      padding: 16px 20px;
+    }
+    .skip-box p {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 6px;
+    }
+    .skip-box p:last-child { margin-bottom: 0; }
+    .skip-box strong { color: #333; }
 
-  /* Layout */
-  .container {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 56px 32px 80px;
-  }
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 16px 60px;
+    }
 
-  /* Page title */
-  .page-title {
-    margin-bottom: 48px;
-  }
-  .page-title h1 {
-    font-size: 32px;
-    font-weight: 600;
-    letter-spacing: -0.8px;
-    margin-bottom: 8px;
-  }
-  .page-title h1 span { color: var(--accent); }
-  .page-title p {
-    color: var(--text-muted);
-    font-size: 14px;
-  }
+    .section {
+      background: #fff;
+      border-radius: 14px;
+      padding: 28px 28px 32px;
+      margin-bottom: 28px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    }
 
-  /* Section */
-  .section {
-    margin-bottom: 64px;
-  }
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 28px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--border);
-  }
-  .section-num {
-    background: var(--accent);
-    color: #fff;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    font-weight: 600;
-    width: 28px; height: 28px;
-    border-radius: 6px;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .section-header h2 {
-    font-size: 20px;
-    font-weight: 600;
-    letter-spacing: -0.3px;
-  }
-  .section-header .badge {
-    margin-left: auto;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--text-muted);
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    padding: 3px 10px;
-    border-radius: 20px;
-  }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .section-num {
+      background: #0071e3;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #1d1d1f;
+    }
+    .section-badge {
+      font-size: 0.75rem;
+      background: #e8f0fe;
+      color: #0071e3;
+      border-radius: 20px;
+      padding: 2px 10px;
+      margin-left: 8px;
+      font-weight: 600;
+    }
 
-  /* Step */
-  .step {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 32px;
-  }
-  .step-left {
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-  }
-  .step-circle {
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    background: var(--surface2);
-    border: 2px solid var(--step-num);
-    color: var(--step-num);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    font-weight: 600;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .step-line {
-    flex: 1;
-    width: 2px;
-    background: var(--border);
-    margin-top: 6px;
-    min-height: 20px;
-  }
-  .step-content {
-    flex: 1;
-    padding-bottom: 8px;
-  }
-  .step-content h3 {
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 6px;
-    color: var(--text);
-  }
-  .step-content p {
-    font-size: 14px;
-    color: var(--text-muted);
-    margin-bottom: 12px;
-  }
+    .step {
+      border-left: 2px solid #e5e5ea;
+      padding-left: 20px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .step::before {
+      content: attr(data-step);
+      position: absolute;
+      left: -12px;
+      top: 0;
+      background: #0071e3;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .step h3 {
+      font-size: 0.97rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #1d1d1f;
+    }
+    .step p {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 8px;
+    }
 
-  /* Callout */
-  .callout {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--accent);
-    border-radius: 0 8px 8px 0;
-    padding: 12px 16px;
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-bottom: 14px;
-  }
-  .callout.success {
-    border-left-color: var(--success);
-  }
-  .callout.warning {
-    border-left-color: var(--warning);
-    color: var(--warning);
-  }
-  .callout strong { color: var(--text); }
+    .step img {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #e5e5ea;
+      margin-top: 10px;
+    }
 
-  /* Screenshot */
-  .screenshot-wrap {
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    background: var(--surface2);
-    margin-top: 10px;
-  }
-  .screenshot-wrap img {
-    width: 100%;
-    display: block;
-  }
-  .screenshot-caption {
-    padding: 8px 14px;
-    font-size: 12px;
-    font-family: 'IBM Plex Mono', monospace;
-    color: var(--text-muted);
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-  }
+    .caption {
+      font-size: 0.8rem;
+      color: #888;
+      margin-top: 6px;
+      text-align: center;
+    }
 
-  /* Divider */
-  .divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 48px 0;
-  }
+    .note {
+      background: #f0f7ff;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      color: #444;
+      margin-top: 8px;
+    }
+    .note strong { color: #0071e3; }
 
-  /* Done banner */
-  .done-banner {
-    background: linear-gradient(135deg, #0d2a1a, #0f1a2e);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 28px 32px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-top: 48px;
-  }
-  .done-icon {
-    font-size: 36px;
-    flex-shrink: 0;
-  }
-  .done-banner h3 {
-    font-size: 17px;
-    font-weight: 600;
-    margin-bottom: 4px;
-    color: var(--success);
-  }
-  .done-banner p {
-    font-size: 13px;
-    color: var(--text-muted);
-  }
+    .done-box {
+      background: #e8f5e9;
+      border-left: 4px solid #34c759;
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px;
+      margin-top: 8px;
+    }
+    .done-box p {
+      font-size: 0.93rem;
+      color: #2e7d32;
+      font-weight: 600;
+    }
 
-  /* Code inline */
-  code {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    padding: 1px 6px;
-    border-radius: 4px;
-    color: var(--accent);
-  }
-
-  @media (max-width: 600px) {
-    header { padding: 20px; }
-    .container { padding: 32px 20px 60px; }
-    .page-title h1 { font-size: 24px; }
-  }
-</style>
+    hr.divider {
+      border: none;
+      border-top: 1px solid #e5e5ea;
+      margin: 20px 0;
+    }
+  </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">Quick<span>Cut</span></div>
-  <p>PC Setup Guide</p>
+  <span class="logo">QuickCut</span>
+  <span class="subtitle">PC Setup Guide</span>
 </header>
 
-<div class="container">
+<main>
 
-  <div class="page-title">
-    <h1>PC <span>Setup</span> Guide</h1>
-    <p>Follow these two steps to connect the QuickCut mobile app to your PC.</p>
+  <!-- Intro -->
+  <div class="intro" style="margin-top:24px;">
+    <p>QuickCut uses SMB (Windows file sharing) to transfer video files between your mobile device and PC.</p>
+    <ul>
+      <li>🔒 Only accounts you create can access your PC — safe on your home network</li>
+      <li>📶 Your phone and PC must be on the <strong>same Wi-Fi network</strong></li>
+    </ul>
   </div>
 
-  <!-- ───────────────────────────────────────────
-       SECTION 1 · Create a Windows Local Account
-  ──────────────────────────────────────────── -->
+  <!-- Skip box -->
+  <div class="skip-box">
+    <p>⚡ <strong>Already using SMB with another app</strong> (e.g. VLC, ES File Explorer)? Skip Sections 1 &amp; 2 — go straight to <strong>Section 3</strong>.</p>
+    <p>👤 <strong>Already have a Windows local account?</strong> Skip Section 1 — go to <strong>Section 2</strong>.</p>
+  </div>
+
+  <!-- Section 1: Network Sharing Options -->
   <div class="section">
     <div class="section-header">
       <div class="section-num">1</div>
-      <h2>Create a Windows Local Account</h2>
-      <div class="badge">Windows Settings</div>
-    </div>
-
-    <div class="callout warning">
-      <strong>Already have a local account?</strong> If you see a "Local account" listed under Other users (step ②), you can skip this section and go to Section 2.
-    </div>
-
-    <!-- Step 1 -->
-    <div class="step">
-      <div class="step-left">
-        <div class="step-circle">1</div>
-        <div class="step-line"></div>
-      </div>
-      <div class="step-content">
-        <h3>Open Settings → Accounts → Family &amp; other users</h3>
-        <p>Click <strong>① Family &amp; other users</strong> in the left sidebar, then click <strong>② Add someone else to this PC</strong>. A Microsoft account dialog will open — click <strong>③ I don't have this person's sign-in information</strong>.</p>
-        <div class="screenshot-wrap">
-          <img src="makelocalaccount (1).png" alt="Family & other users – Add someone else to this PC">
-          <div class="screenshot-caption">① Accounts sidebar &nbsp;→&nbsp; ② Add someone else &nbsp;→&nbsp; ③ No sign-in info</div>
+      <div>
+        <div class="section-title">Enable Windows Network Sharing Options
+          <span class="section-badge">Skip if already using SMB</span>
         </div>
       </div>
     </div>
 
-    <!-- Step 2 -->
-    <div class="step">
-      <div class="step-left">
-        <div class="step-circle">2</div>
-        <div class="step-line"></div>
-      </div>
-      <div class="step-content">
-        <h3>Add a user without a Microsoft account</h3>
-        <p>On the next screen click <strong>① Add a user without a Microsoft account</strong>.</p>
-        <div class="screenshot-wrap">
-          <img src="makelocalaccount (2).png" alt="Add a user without a Microsoft account">
-          <div class="screenshot-caption">① Add a user without a Microsoft account</div>
-        </div>
-      </div>
+    <div class="step" data-step="1">
+      <h3>Open Network &amp; Internet Settings</h3>
+      <p>Open <strong>Windows Settings</strong> → <strong>Network &amp; Internet</strong> → click <strong>① Ethernet</strong> (or Wi-Fi if on wireless).</p>
     </div>
 
-    <!-- Step 3 -->
-    <div class="step">
-      <div class="step-left">
-        <div class="step-circle">3</div>
-        <div class="step-line"></div>
-      </div>
-      <div class="step-content">
-        <h3>Enter a username and password</h3>
-        <p>Fill in <strong>① the username and password</strong>, then click <strong>② Next</strong>.<br>
-        Remember this username — you will enter the same name in the QuickCut mobile app's SMB Settings.</p>
-        <div class="screenshot-wrap">
-          <img src="makelocalaccount (3).png" alt="Create a user for this PC">
-          <div class="screenshot-caption">① Enter username &amp; password &nbsp;→&nbsp; ② Next</div>
-        </div>
-      </div>
+    <div class="step" data-step="2">
+      <h3>Open Advanced sharing settings</h3>
+      <p>Under <strong>Related settings</strong>, click <strong>② Change advanced sharing options</strong>.</p>
     </div>
 
-    <!-- Step 4 -->
-    <div class="step">
-      <div class="step-left">
-        <div class="step-circle">4</div>
-      </div>
-      <div class="step-content">
-        <h3>Account created</h3>
-        <p>The new local account now appears in the list.</p>
-        <div class="screenshot-wrap">
-          <img src="makelocalaccount (4).png" alt="Local account created successfully">
-          <div class="screenshot-caption">New local account visible in the list</div>
-        </div>
-      </div>
-    </div>
-
-  </div><!-- /section 1 -->
-
-  <hr class="divider">
-
-  <!-- ───────────────────────────────────────────
-       SECTION 2 · Set Up SMB Share
-  ──────────────────────────────────────────── -->
-  <div class="section">
-    <div class="section-header">
-      <div class="section-num">2</div>
-      <h2>Set Up SMB Share for the QuickCut Folder</h2>
-      <div class="badge">File Explorer</div>
-    </div>
-
-    <!-- Step 1 -->
-    <div class="step">
-      <div class="step-left">
-        <div class="step-circle">1</div>
-        <div class="step-line"></div>
-      </div>
-      <div class="step-content">
-        <h3>Open the QuickCut folder properties</h3>
-        <p>Right-click the QuickCut folder → <strong>Properties</strong>. Click <strong>① the Sharing tab</strong>, then click <strong>② Advanced Sharing</strong>.</p>
-        <div class="screenshot-wrap">
-          <img src="smbsetting (1).png" alt="Folder Properties – Sharing tab">
-          <div class="screenshot-caption">① Sharing tab &nbsp;→&nbsp; ② Advanced Sharing</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Step 2 -->
-    <div class="step">
-      <div class="step-left">
-        <div class="step-circle">2</div>
-        <div class="step-line"></div>
-      </div>
-      <div class="step-content">
-        <h3>Enable sharing and open Permissions</h3>
-        <p>Check <strong>① Share this folder</strong>. Confirm the share name is <code>QuickCut</code> <strong>②</strong>. Click <strong>③ Permissions</strong> to open the permissions window.</p>
-        <p>In the Permissions window, if your account already appears in <strong>Group or user names</strong>, skip steps ④⑤⑥. Otherwise click <strong>④ Add</strong>, type your Windows account name in the text box <strong>⑤</strong> (the same name you created in Section 1), and click <strong>⑥ OK</strong>.</p>
-        <div class="callout">
-          <strong>Not sure of your account name?</strong> Check Section 1 Step 4 — it's the name shown under "Local account".
-        </div>
-        <div class="screenshot-wrap">
-          <img src="smbsetting (2).png" alt="Advanced Sharing – Permissions – Add user">
-          <div class="screenshot-caption">① Share this folder &nbsp;→&nbsp; ② Share name: QuickCut &nbsp;→&nbsp; ③ Permissions &nbsp;→&nbsp; ④ Add &nbsp;→&nbsp; ⑤ Enter account name &nbsp;→&nbsp; ⑥ OK</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Step 3 -->
-    <div class="step">
-      <div class="step-left">
-        <div class="step-circle">3</div>
-      </div>
-      <div class="step-content">
-        <h3>Grant Full Control and apply</h3>
-        <p>Select your account <strong>①</strong> and make sure <strong>Full Control – Allow ②</strong> is checked. Click <strong>③ Apply → ④ OK</strong> to close the Permissions window, then click <strong>⑤ Apply → ⑥ OK</strong> in the Advanced Sharing window, and finally <strong>⑦ OK</strong> in the Properties window.</p>
-        <div class="screenshot-wrap">
-          <img src="smbsetting (3).png" alt="Full Control permissions – Apply and OK">
-          <div class="screenshot-caption">① Select account &nbsp;→&nbsp; ② Full Control Allow &nbsp;→&nbsp; ③ Apply &nbsp;→&nbsp; ④ OK &nbsp;→&nbsp; ⑤⑥⑦ Close all windows</div>
-        </div>
-      </div>
-    </div>
-
-  </div><!-- /section 2 -->
-
-  <hr class="divider">
-
-  <!-- ───────────────────────────────────────────
-       SECTION 3 · Share a Video Folder on Your PC
-  ──────────────────────────────────────────── -->
-  <div class="section">
-    <div class="section-header">
-      <div class="section-num">3</div>
-      <h2>Share a Video Folder on Your PC</h2>
-      <div class="badge">File Explorer</div>
-    </div>
-
-    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">
-      To edit videos directly from your PC on the mobile app, you need to share the folder where your videos are stored.
-    </p>
-
-    <div class="step">
-      <div class="step-left">
-        <div class="step-circle">1</div>
-        <div class="step-line"></div>
-      </div>
-      <div class="step-content">
-        <h3>Open folder Properties → Sharing tab → Share...</h3>
-        <p>Right-click the folder containing your videos → <strong>Properties</strong> → <strong>Sharing</strong> tab → click <strong>① Share...</strong></p>
-      </div>
-    </div>
-
-    <div class="step">
-      <div class="step-left">
-        <div class="step-circle">2</div>
-        <div class="step-line"></div>
-      </div>
-      <div class="step-content">
-        <h3>Add your Windows account and set permission</h3>
-        <p>Click the dropdown → select the Windows account you created in Section 1 → click <strong>Add</strong>. Make sure the Permission Level is set to <strong>② Read/Write</strong>.</p>
-      </div>
-    </div>
-
-    <div class="step">
-      <div class="step-left">
-        <div class="step-circle">3</div>
-      </div>
-      <div class="step-content">
-        <h3>Click Share</h3>
-        <p>Click <strong>③ Share</strong> to apply. The folder is now accessible from the QuickCut mobile app via SMB browsing.</p>
-        <div class="screenshot-wrap">
-          <img src="ShareVideoFolder.png" alt="Share video folder – Network access">
-          <div class="screenshot-caption">① Share... &nbsp;→&nbsp; ② Account with Read/Write &nbsp;→&nbsp; ③ Share</div>
-        </div>
-      </div>
-    </div>
-
-  </div><!-- /section 3 -->
-
-  <!-- Done -->
-  <div class="done-banner">
-    <div class="done-icon">✅</div>
-    <div>
-      <h3>All done!</h3>
-      <p>Open the QuickCut mobile app → SMB Settings, enter your PC's IP address and the Windows account name you just created. The connection status will change to <strong>Active</strong>.</p>
+    <div class="step" data-step="3">
+      <h3>Turn on Network discovery &amp; File and printer sharing</h3>
+      <p>Under <strong>Private (current profile)</strong>, enable both options <strong>③</strong>:</p>
+      <ul style="font-size:0.9rem;color:#555;padding-left:18px;margin-bottom:8px;">
+        <li><strong>Turn on network discovery</strong></li>
+        <li><strong>Turn on file and printer sharing</strong></li>
+      </ul>
+      <p>Save changes.</p>
+      <img src="networkOption.png" alt="Advanced sharing settings – Network discovery and File and printer sharing turned on" />
+      <div class="caption">① Ethernet → ② Change advanced sharing options → ③ Turn on both options</div>
     </div>
   </div>
 
-</div><!-- /container -->
+  <!-- Section 2: Local Account -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div>
+        <div class="section-title">Create a Windows Local Account
+          <span class="section-badge">Skip if already have a local account</span>
+        </div>
+      </div>
+    </div>
 
+    <div class="step" data-step="1">
+      <h3>Open Settings → Accounts → Family &amp; other users</h3>
+      <p>Click <strong>① Family &amp; other users</strong> in the left sidebar, then click <strong>② Add someone else to this PC</strong>. A Microsoft account dialog will open — click <strong>③ I don't have this person's sign-in information</strong>.</p>
+      <img src="https://changhyeon0352.github.io/quickcutNetworkSettingsGuide/makelocalaccount (1).png" alt="Family & other users – Add someone else to this PC" />
+      <div class="caption">① Accounts sidebar → ② Add someone else → ③ No sign-in info</div>
+    </div>
+
+    <div class="step" data-step="2">
+      <h3>Add a user without a Microsoft account</h3>
+      <p>On the next screen click <strong>① Add a user without a Microsoft account</strong>.</p>
+      <img src="https://changhyeon0352.github.io/quickcutNetworkSettingsGuide/makelocalaccount (2).png" alt="Add a user without a Microsoft account" />
+      <div class="caption">① Add a user without a Microsoft account</div>
+    </div>
+
+    <div class="step" data-step="3">
+      <h3>Enter a username and password</h3>
+      <p>Fill in <strong>① the username and password</strong>, then click <strong>② Next</strong>.<br/>
+      Remember this username — you will enter the same name in the QuickCut mobile app's SMB Settings.</p>
+      <img src="https://changhyeon0352.github.io/quickcutNetworkSettingsGuide/makelocalaccount (3).png" alt="Create a user for this PC" />
+      <div class="caption">① Enter username &amp; password → ② Next</div>
+    </div>
+
+    <div class="step" data-step="4">
+      <h3>Account created</h3>
+      <p>The new local account now appears in the list.</p>
+      <img src="https://changhyeon0352.github.io/quickcutNetworkSettingsGuide/makelocalaccount (4).png" alt="Local account created successfully" />
+      <div class="caption">New local account visible in the list</div>
+    </div>
+  </div>
+
+  <!-- Section 3: QuickCut Folder SMB Share -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div>
+        <div class="section-title">Set Up SMB Share for the QuickCut Folder</div>
+      </div>
+    </div>
+
+    <div class="step" data-step="1">
+      <h3>Open the QuickCut folder properties</h3>
+      <p>Right-click the QuickCut folder → <strong>Properties</strong>. Click <strong>① the Sharing tab</strong>, then click <strong>② Advanced Sharing</strong>.</p>
+      <img src="https://changhyeon0352.github.io/quickcutNetworkSettingsGuide/smbsetting (1).png" alt="Folder Properties – Sharing tab" />
+      <div class="caption">① Sharing tab → ② Advanced Sharing</div>
+    </div>
+
+    <div class="step" data-step="2">
+      <h3>Enable sharing and open Permissions</h3>
+      <p>Check <strong>① Share this folder</strong>. Confirm the share name is <code>QuickCut</code> <strong>②</strong>. Click <strong>③ Permissions</strong> to open the permissions window.</p>
+      <p>In the Permissions window, if your account already appears in <strong>Group or user names</strong>, skip steps ④⑤⑥. Otherwise click <strong>④ Add</strong>, type your Windows account name in the text box <strong>⑤</strong> (the same name you created in Section 2), and click <strong>⑥ OK</strong>.</p>
+      <img src="https://changhyeon0352.github.io/quickcutNetworkSettingsGuide/smbsetting (2).png" alt="Advanced Sharing – Permissions – Add user" />
+      <div class="caption">① Share this folder → ② Share name: QuickCut → ③ Permissions → ④ Add → ⑤ Enter account name → ⑥ OK</div>
+    </div>
+
+    <div class="step" data-step="3">
+      <h3>Grant Full Control and apply</h3>
+      <p>Select your account <strong>①</strong> and make sure <strong>Full Control – Allow ②</strong> is checked. Click <strong>③ Apply → ④ OK</strong> to close the Permissions window, then click <strong>⑤ Apply → ⑥ OK</strong> in the Advanced Sharing window, and finally <strong>⑦ OK</strong> in the Properties window.</p>
+      <img src="https://changhyeon0352.github.io/quickcutNetworkSettingsGuide/smbsetting (3).png" alt="Full Control permissions – Apply and OK" />
+      <div class="caption">① Select account → ② Full Control Allow → ③ Apply → ④ OK → ⑤⑥⑦ Close all windows</div>
+    </div>
+
+    <hr class="divider"/>
+
+    <div class="step" data-step="4">
+      <h3>Also grant access via the Sharing tab (required)</h3>
+      <p>Back in the Properties window, click <strong>① Share...</strong> on the Sharing tab. In the Network access window, select your account from the dropdown <strong>②</strong> and click <strong>Add</strong>. Make sure the Permission Level is set to <strong>Read/Write ③</strong>. Click <strong>④ Share</strong> to apply.</p>
+      <div class="note"><strong>Why is this needed?</strong> Advanced Sharing and the Share... button control separate permission layers. Both must allow your account for SMB access to work correctly.</div>
+      <img src="sharePermission.png" alt="Sharing tab – Share... – Add account with Read/Write" />
+      <div class="caption">① Share... → ② Select account → ③ Read/Write → ④ Share</div>
+    </div>
+  </div>
+
+  <!-- Section 4: Video Folder Share -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div>
+        <div class="section-title">Share a Video Folder on Your PC</div>
+      </div>
+    </div>
+
+    <p style="font-size:0.9rem;color:#555;margin-bottom:20px;">To browse and edit videos directly from your PC on the mobile app, share the folder where your videos are stored.</p>
+
+    <div class="step" data-step="1">
+      <h3>Open folder Properties → Sharing tab → Share...</h3>
+      <p>Right-click the folder containing your videos → <strong>Properties</strong> → <strong>Sharing</strong> tab → click <strong>① Share...</strong></p>
+    </div>
+
+    <div class="step" data-step="2">
+      <h3>Add your Windows account and set permission</h3>
+      <p>Click the dropdown → select the Windows account you created in Section 2 → click <strong>Add</strong>. Make sure the Permission Level is set to <strong>② Read/Write</strong>.</p>
+    </div>
+
+    <div class="step" data-step="3">
+      <h3>Click Share</h3>
+      <p>Click <strong>③ Share</strong> to apply. The folder is now accessible from the QuickCut mobile app via SMB browsing.</p>
+      <img src="https://changhyeon0352.github.io/quickcutNetworkSettingsGuide/ShareVideoFolder.png" alt="Share video folder – Network access" />
+      <div class="caption">① Share... → ② Account with Read/Write → ③ Share</div>
+    </div>
+
+    <div class="done-box">
+      <p>✅ All done! Open the QuickCut mobile app → SMB Settings, enter your PC's IP address and the Windows account credentials you just created.</p>
+    </div>
+  </div>
+
+</main>
 </body>
 </html>
